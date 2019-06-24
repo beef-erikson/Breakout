@@ -11,19 +11,24 @@ public class Paddle : MonoBehaviour
     #region Fields
 
     Rigidbody2D rb2d;
+    float paddleHalfWidth;
 
     #endregion
 
     #region Methods
 
     /// <summary>
-    /// Grabs rigidbody
+    /// Initializers
     /// </summary>
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        paddleHalfWidth = GetComponent<BoxCollider2D>().size.x * 0.5f;
     }
 
+    /// <summary>
+    /// Movement of Paddle
+    /// </summary>
     void FixedUpdate()
     {
         Vector2 velocity = new Vector2(ConfigurationUtils.PaddleMoveUnitsPerSecond, 0);
