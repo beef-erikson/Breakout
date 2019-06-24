@@ -26,10 +26,20 @@ public class Paddle : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector2 velocity = new Vector2(ConfigurationUtils.PaddleMoveUnitsPerSecond, 0);
+
         if (Input.GetAxis("Horizontal") != 0)
         {
-            rb2d.MovePosition(new Vector2(transform.position.x + ConfigurationUtils.PaddleMoveUnitsPerSecond * Time.deltaTime,
-                transform.position.y));
+            // move left
+            if (Input.GetAxis("Horizontal") < 0)
+            {
+                rb2d.MovePosition(rb2d.position - velocity * Time.deltaTime);
+            }
+            // move right
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                rb2d.MovePosition(rb2d.position + velocity * Time.deltaTime);
+            }
         }
     }
 
