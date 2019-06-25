@@ -18,6 +18,10 @@ public static class ConfigurationUtils
         get { return 10; }
     }
 
+    public static float BallImpulseForce
+    {
+        get { return 200; }
+    }
     #endregion
     
     /// <summary>
