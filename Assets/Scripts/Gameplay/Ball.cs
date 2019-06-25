@@ -22,8 +22,8 @@ public class Ball : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
 
-        // Starts ball moving at a 20 degree angle
-        float angle = 20 * Mathf.Deg2Rad;
+        // Starts ball moving directly down
+        float angle = 270 * Mathf.Deg2Rad;
         Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
         rb2d.AddForce(direction * ConfigurationUtils.BallImpulseForce, ForceMode2D.Force);

@@ -17,6 +17,8 @@ public class Paddle : MonoBehaviour
     Rigidbody2D rb2d;
     float paddleHalfWidth;
 
+    const float BounceAngleHalfRange = 60 * Mathf.Deg2Rad;
+
     #endregion
 
     #region Methods

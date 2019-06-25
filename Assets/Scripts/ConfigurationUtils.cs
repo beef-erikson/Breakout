@@ -20,7 +20,7 @@ public static class ConfigurationUtils
 
     public static float BallImpulseForce
     {
-        get { return 200; }
+        get { return 300; }
     }
     #endregion
     
