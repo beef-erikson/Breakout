@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Ball logic
@@ -28,11 +26,15 @@ public class Ball : MonoBehaviour
 
         rb2d.AddForce(direction * ConfigurationUtils.BallImpulseForce, ForceMode2D.Force);
     }
-
-    // Update is called once per frame
-    void Update()
+  
+    /// <summary>
+    /// Changes the direction of the Ball on Paddle hit
+    /// </summary>
+    /// <param name="direction">direction to head</param>
+    public void SetDirection(Vector2 direction)
     {
-        
+        rb2d.velocity = rb2d.velocity.magnitude * direction;
     }
+
     #endregion
 }
