@@ -10,6 +10,7 @@ public class Paddle : MonoBehaviour
 {
     #region Fields
 
+    // Change this to equal scale change to sprite
     public int ScaleFactor = 3;
 
     // intializes at start
@@ -53,13 +54,11 @@ public class Paddle : MonoBehaviour
         }
     }
 
-//    Write a new CalculateClampedX method that returns an x value that takes a possible
-//new x position for the rigidbody, shifts it if necessary to clamp the paddle to stay in the
-//screen horizontally, and returns a clamped new x position(which could just be the
-//original new x position that was passed in if no clamping was required). Call this method
-//if you move the game object in the FixedUpdate method BEFORE you call the
-//MovePosition method.The “big idea” is that you have to calculate a valid new x
-//position, including the clamping, before you call the method to move the rigidbody.
+    /// <summary>
+    /// Clamps the paddle inside window
+    /// </summary>
+    /// <param name="rigidbodyXValue">rigidbody2d x position</param>
+    /// <returns>clamped value</returns>
     float CalculateClampedX(float rigidbodyXValue)
     {
         float boundsBuffer = 0.16f;
@@ -74,6 +73,7 @@ public class Paddle : MonoBehaviour
         {
             rigidbodyXValue = ScreenUtils.ScreenRight - paddleHalfWidth * ScaleFactor - boundsBuffer;
         }
+
         return rigidbodyXValue;
     }
     #endregion
