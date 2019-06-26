@@ -23,7 +23,9 @@ public static class ConfigurationUtils
         get { return 300; }
     }
     #endregion
-    
+
+    #region Methods 
+
     /// <summary>
     /// Initializes the configuration utils
     /// </summary>
@@ -31,4 +33,6 @@ public static class ConfigurationUtils
     {
 
     }
+
+    #endregion
 }

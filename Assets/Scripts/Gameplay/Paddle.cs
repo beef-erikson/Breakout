@@ -13,10 +13,12 @@ public class Paddle : MonoBehaviour
     // Change this to equal scale change to sprite
     public int ScaleFactor = 3;
 
-    // intializes at start
+    // Intializes at start
     Rigidbody2D rb2d;
     float paddleHalfWidth;
+    float colliderHalfHeight;
 
+    // Used to mimic block as a convex
     const float BounceAngleHalfRange = 60 * Mathf.Deg2Rad;
 
     #endregion
@@ -30,6 +32,7 @@ public class Paddle : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         paddleHalfWidth = GetComponent<BoxCollider2D>().size.x * 0.5f;
+        colliderHalfHeight = GetComponent<BoxCollider2D>().bounds.size.y * 0.5f;
     }
 
     /// <summary>
@@ -85,7 +88,7 @@ public class Paddle : MonoBehaviour
     /// <param name="collision">collision info</param>
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ball"))
+        if (collision.gameObject.CompareTag("Ball") && IsPaddleTop(collision))
         {
             // calculate new ball direction
             float ballOffsetFromPaddleCenter = transform.position.x -
@@ -101,5 +104,28 @@ public class Paddle : MonoBehaviour
             ballScript.SetDirection(direction);
         }
     }
+
+    /// <summary>
+    /// Determines whether collision is top of paddle
+    /// </summary>
+    /// <param name="collision">collision2d to test against</param>
+    /// <returns>whether top or not</returns>
+    bool IsPaddleTop(Collision2D collision)
+    {
+        // grabs contact points to compare against a tolerance    
+        float topOfPaddle = transform.position.y + colliderHalfHeight;
+        float contactPoint = collision.GetContact(collision.contactCount - 1).point.y;
+        float tolerance = 0.05f;      
+        
+        // compares points
+        if (contactPoint >= topOfPaddle - tolerance
+            && contactPoint <= topOfPaddle + tolerance)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     #endregion
 }
