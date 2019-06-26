@@ -21,13 +21,17 @@ public static class ConfigurationUtils
     /// <value>paddle move units per second</value>
     public static float PaddleMoveUnitsPerSecond
     {
-        get { return 10; }
+        get { return configurationData.PaddleMoveUnitsPerSecond; }
     }
 
+    /// <summary>
+    /// Gets the Impulse Force to be applied to the ball
+    /// </summary>
     public static float BallImpulseForce
     {
-        get { return 300; }
+        get { return configurationData.BallImpulseForce; }
     }
+
     #endregion
 
     #region Methods 

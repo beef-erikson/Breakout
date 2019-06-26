@@ -44,10 +44,8 @@ public class ConfigurationData
     #region Constructor
 
     /// <summary>
-    /// Constructor
-    /// Reads configuration data from a file. If the file
-    /// read fails, the object contains default values for
-    /// the configuration data
+    /// Reads configuration data from a file. If the file read fails, contains default values for
+    /// the configuration data.
     /// </summary>
     public ConfigurationData()
     {
@@ -55,7 +53,10 @@ public class ConfigurationData
 
         try
         {
+            // reads in file and sets fields from .csv, ignoring descriptive first line
             configFile = File.OpenText(Path.Combine(Application.streamingAssetsPath, ConfigurationDataFileName));
+            configFile.ReadLine();
+            SetConfigurationFields(configFile.ReadLine());
         }
         catch (Exception e)
         {
@@ -68,7 +69,23 @@ public class ConfigurationData
                 configFile.Close();
             }
         }
-    }   
+    }
+
+    #endregion
+
+    #region Methods
+
+    /// <summary>
+    /// Sets the configuration fields generated from the .csv file
+    /// </summary>
+    /// <param name="csvValues">csv values</param>
+    void SetConfigurationFields(string csvValues)
+    {
+        string[] values = csvValues.Split(',');
+
+        paddleMoveUnitsPerSecond = int.Parse(values[0]);
+        ballImpulseForce = int.Parse(values[1]);
+    }
 
     #endregion
 }
