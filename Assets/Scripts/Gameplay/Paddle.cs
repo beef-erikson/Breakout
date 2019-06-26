@@ -31,7 +31,7 @@ public class Paddle : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        paddleHalfWidth = GetComponent<BoxCollider2D>().size.x * 0.5f;
+        paddleHalfWidth = GetComponent<BoxCollider2D>().bounds.size.x * 0.5f;
         colliderHalfHeight = GetComponent<BoxCollider2D>().bounds.size.y * 0.5f;
     }
 
@@ -66,17 +66,15 @@ public class Paddle : MonoBehaviour
     /// <returns>clamped value</returns>
     float CalculateClampedX(float rigidbodyXValue)
     {
-        float boundsBuffer = 0.16f;
-
         // clamp left
-        if (rigidbodyXValue < ScreenUtils.ScreenLeft + paddleHalfWidth * ScaleFactor)
+        if (rigidbodyXValue < ScreenUtils.ScreenLeft + paddleHalfWidth)
         {
-            rigidbodyXValue = ScreenUtils.ScreenLeft + paddleHalfWidth * ScaleFactor + boundsBuffer;
+            rigidbodyXValue = ScreenUtils.ScreenLeft + paddleHalfWidth;
         }
         // clamp right
-        if (rigidbodyXValue > ScreenUtils.ScreenRight - paddleHalfWidth * ScaleFactor)
+        if (rigidbodyXValue > ScreenUtils.ScreenRight - paddleHalfWidth)
         {
-            rigidbodyXValue = ScreenUtils.ScreenRight - paddleHalfWidth * ScaleFactor - boundsBuffer;
+            rigidbodyXValue = ScreenUtils.ScreenRight - paddleHalfWidth;
         }
 
         return rigidbodyXValue;
