@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System;
 
 /// <summary>
 /// A container for the configuration data
@@ -9,7 +11,7 @@ public class ConfigurationData
 {
     #region Fields
 
-    const string ConfigurationDataFileName = "ConfigurationData.csv";
+    const string ConfigurationDataFileName = "Config.csv";
 
     // configuration data
     static float paddleMoveUnitsPerSecond = 10;
@@ -49,8 +51,24 @@ public class ConfigurationData
     /// </summary>
     public ConfigurationData()
     {
-        
-    }
+        StreamReader configFile = null;
+
+        try
+        {
+            configFile = File.OpenText(Path.Combine(Application.streamingAssetsPath, ConfigurationDataFileName));
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+        finally
+        {
+            if (configFile != null)
+            {
+                configFile.Close();
+            }
+        }
+    }   
 
     #endregion
 }
