@@ -12,7 +12,8 @@ public class GameInitializer : MonoBehaviour
     /// </summary>
 	void Awake()
     {
-        // initialize screen utils
+        // initializers 
         ScreenUtils.Initialize();
+        ConfigurationUtils.Initialize();
     }
 }

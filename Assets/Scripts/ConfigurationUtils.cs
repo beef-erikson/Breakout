@@ -7,8 +7,14 @@ using UnityEngine;
 /// </summary>
 public static class ConfigurationUtils
 {
+    #region Fields
+
+    public static ConfigurationData configurationData;
+
+    #endregion
+
     #region Properties
-    
+
     /// <summary>
     /// Gets the paddle move units per second
     /// </summary>
@@ -31,7 +37,7 @@ public static class ConfigurationUtils
     /// </summary>
     public static void Initialize()
     {
-
+        configurationData = new ConfigurationData();
     }
 
     #endregion
