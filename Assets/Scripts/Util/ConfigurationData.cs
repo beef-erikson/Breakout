@@ -83,8 +83,8 @@ public class ConfigurationData
     {
         string[] values = csvValues.Split(',');
 
-        paddleMoveUnitsPerSecond = int.Parse(values[0]);
-        ballImpulseForce = int.Parse(values[1]);
+        paddleMoveUnitsPerSecond = float.Parse(values[0]);
+        ballImpulseForce = float.Parse(values[1]);
     }
 
     #endregion
