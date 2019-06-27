@@ -60,7 +60,7 @@ public class ConfigurationData
         }
         catch (Exception e)
         {
-            Debug.Log(e);
+            Debug.Log(e.Message);
         }
         finally
         {
