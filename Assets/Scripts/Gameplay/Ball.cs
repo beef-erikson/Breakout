@@ -42,10 +42,14 @@ public class Ball : MonoBehaviour
         rb2d.velocity = rb2d.velocity.magnitude * direction;
     }
 
+    /// <summary>
+    /// When timer expires, instantiates and destroys ball.
+    /// </summary>
     void Update()
     {
         if (!timer.Running)
         {
+            Camera.main.GetComponent<BallSpawner>().SpawnBall();
             Destroy(gameObject);
         }
     }
