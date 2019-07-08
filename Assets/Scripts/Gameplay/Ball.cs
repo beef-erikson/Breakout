@@ -10,11 +10,27 @@ public class Ball : MonoBehaviour
     Rigidbody2D rb2d;
     Timer timerBallLife;
     Timer timerSpawnDelay;
+
     bool isBallMoving = false;
 
     #endregion
 
     #region Methods
+
+    /// <summary>
+    /// Destroys and spawns a new ball whenever it leaves the screen.
+    /// Only spawns if the ball is actually below the screen
+    /// </summary>
+    void OnBecameInvisible()
+    {
+        float topOfBall = transform.position.y - gameObject.GetComponent<BoxCollider2D>().bounds.size.y * 0.5f;
+
+        if (topOfBall <= ScreenUtils.ScreenBottom)
+        {
+            Camera.main.GetComponent<BallSpawner>().SpawnBall();
+            Destroy(gameObject);
+        }
+    }
 
     /// <summary>
     /// Moves ball
@@ -55,7 +71,6 @@ public class Ball : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // TODO: NOT WORKING
         // When spawn timer expires, gets ball moving
         if (!timerSpawnDelay.Running && !isBallMoving)
         {
@@ -66,5 +81,6 @@ public class Ball : MonoBehaviour
             isBallMoving = true;
         }
     }
+
     #endregion
 }
