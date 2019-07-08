@@ -95,6 +95,6 @@ public class Timer : MonoBehaviour
             elapsedSeconds = 0;
 		}
 	}
-	
-	#endregion
+
+    #endregion
 }

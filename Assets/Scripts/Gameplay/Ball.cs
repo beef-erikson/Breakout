@@ -8,7 +8,9 @@ public class Ball : MonoBehaviour
     #region Fields
 
     Rigidbody2D rb2d;
-    Timer timer;
+    Timer timerBallLife;
+    Timer timerSpawnDelay;
+    bool isBallMoving = false;
 
     #endregion
 
@@ -20,17 +22,16 @@ public class Ball : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        timer = gameObject.AddComponent<Timer>();
+        timerBallLife = gameObject.AddComponent<Timer>();
+        timerSpawnDelay = gameObject.AddComponent<Timer>();
 
-        // Starts ball moving directly down
-        float angle = 270 * Mathf.Deg2Rad;
-        Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-
-        rb2d.AddForce(direction * ConfigurationUtils.BallImpulseForce, ForceMode2D.Force);
+        // Starts spawn timer
+        timerSpawnDelay.Duration = 2f;
+        timerSpawnDelay.Run();
 
         // Destroys ball after timer expires
-        timer.Duration = ConfigurationUtils.BallLifetimePerSecond;
-        timer.Run();
+        timerBallLife.Duration = ConfigurationUtils.BallLifetimePerSecond;
+        timerBallLife.Run();
     }
   
     /// <summary>
@@ -43,14 +44,26 @@ public class Ball : MonoBehaviour
     }
 
     /// <summary>
-    /// When timer expires, instantiates and destroys ball.
+    /// Timer logic for both spawner and ball life
     /// </summary>
     void Update()
     {
-        if (!timer.Running)
+        // When timer expires, instantiates and destroys ball.
+        if (!timerBallLife.Running)
         {
             Camera.main.GetComponent<BallSpawner>().SpawnBall();
             Destroy(gameObject);
+        }
+
+        // TODO: NOT WORKING
+        // When spawn timer expires, gets ball moving
+        if (!timerSpawnDelay.Running && !isBallMoving)
+        {
+            float angle = 270 * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+
+            rb2d.AddForce(direction * ConfigurationUtils.BallImpulseForce, ForceMode2D.Force);
+            isBallMoving = true;
         }
     }
     #endregion
