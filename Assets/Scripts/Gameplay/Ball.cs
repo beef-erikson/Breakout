@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     #region Fields
 
     Rigidbody2D rb2d;
+    Timer timer;
 
     #endregion
 
@@ -19,12 +20,17 @@ public class Ball : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        timer = gameObject.AddComponent<Timer>();
 
         // Starts ball moving directly down
         float angle = 270 * Mathf.Deg2Rad;
         Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
         rb2d.AddForce(direction * ConfigurationUtils.BallImpulseForce, ForceMode2D.Force);
+
+        // Destroys ball after timer expires
+        timer.Duration = ConfigurationUtils.BallLifetimePerSecond;
+        timer.Run();
     }
   
     /// <summary>
@@ -36,5 +42,12 @@ public class Ball : MonoBehaviour
         rb2d.velocity = rb2d.velocity.magnitude * direction;
     }
 
+    void Update()
+    {
+        if (!timer.Running)
+        {
+            Destroy(gameObject);
+        }
+    }
     #endregion
 }

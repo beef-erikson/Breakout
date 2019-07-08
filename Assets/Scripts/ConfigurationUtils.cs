@@ -21,7 +21,7 @@ public static class ConfigurationUtils
     /// <value>paddle move units per second</value>
     public static float PaddleMoveUnitsPerSecond
     {
-        get { return configurationData.PaddleMoveUnitsPerSecond; }
+        get => configurationData.PaddleMoveUnitsPerSecond;
     }
 
     /// <summary>
@@ -29,9 +29,13 @@ public static class ConfigurationUtils
     /// </summary>
     public static float BallImpulseForce
     {
-        get { return configurationData.BallImpulseForce; }
+        get => configurationData.BallImpulseForce;
     }
 
+    public static float BallLifetimePerSecond
+    {
+        get => configurationData.BallLifetimePerSecond;
+    }
     #endregion
 
     #region Methods 

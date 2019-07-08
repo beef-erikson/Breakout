@@ -25,7 +25,7 @@ public static class ScreenUtils
     /// <value>left edge of the screen</value>
     public static float ScreenLeft
     {
-        get { return screenLeft; }
+        get => screenLeft;
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public static class ScreenUtils
     /// <value>right edge of the screen</value>
     public static float ScreenRight
     {
-        get { return screenRight; }
+        get => screenRight;
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ public static class ScreenUtils
     /// <value>top edge of the screen</value>
     public static float ScreenTop
     {
-        get { return screenTop; }
+        get => screenTop;
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public static class ScreenUtils
     /// <value>bottom edge of the screen</value>
     public static float ScreenBottom
     {
-        get { return screenBottom; }
+        get => screenBottom;
     }
 
     #endregion

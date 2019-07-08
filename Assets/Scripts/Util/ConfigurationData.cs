@@ -16,6 +16,7 @@ public class ConfigurationData
     // configuration data
     static float paddleMoveUnitsPerSecond = 10;
     static float ballImpulseForce = 200;
+    static float ballLifetimePerSecond = 4;
 
     #endregion
 
@@ -27,7 +28,7 @@ public class ConfigurationData
     /// <value>paddle move units per second</value>
     public float PaddleMoveUnitsPerSecond
     {
-        get { return paddleMoveUnitsPerSecond; }
+        get => paddleMoveUnitsPerSecond;
     }
 
     /// <summary>
@@ -36,9 +37,13 @@ public class ConfigurationData
     /// <value>impulse force</value>
     public float BallImpulseForce
     {
-        get { return ballImpulseForce; }    
+        get => ballImpulseForce;
     }
 
+    public float BallLifetimePerSecond
+    {
+        get => ballLifetimePerSecond;
+    }
     #endregion
 
     #region Constructor
@@ -85,6 +90,7 @@ public class ConfigurationData
 
         paddleMoveUnitsPerSecond = float.Parse(values[0]);
         ballImpulseForce = float.Parse(values[1]);
+        ballLifetimePerSecond = float.Parse(values[2]);
     }
 
     #endregion
