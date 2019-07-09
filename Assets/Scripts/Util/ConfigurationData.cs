@@ -13,10 +13,12 @@ public class ConfigurationData
 
     const string ConfigurationDataFileName = "Config.csv";
 
-    // configuration data
+    // default configuration data if csv cannot be found
     static float paddleMoveUnitsPerSecond = 10;
     static float ballImpulseForce = 200;
     static float ballLifetimePerSecond = 4;
+    static float ballMinimumSpawnTime = 10;
+    static float ballMaximumSpawnTime = 20;
 
     #endregion
 
@@ -40,10 +42,30 @@ public class ConfigurationData
         get => ballImpulseForce;
     }
 
+    /// <summary>
+    /// Lifetime of the ball before self destruction
+    /// </summary>
     public float BallLifetimePerSecond
     {
         get => ballLifetimePerSecond;
     }
+
+    /// <summary>
+    /// Mimimum time in seconds before spawning a new ball
+    /// </summary>
+    public float BallMinimumSpawnTime
+    {
+        get => ballMinimumSpawnTime;
+    }
+
+    /// <summary>
+    /// Maximum spawn time in seconds before spawning a new ball
+    /// </summary>
+    public float BallMaximumSpawnTime
+    {
+        get => ballMinimumSpawnTime;
+    }
+
     #endregion
 
     #region Constructor
@@ -91,6 +113,8 @@ public class ConfigurationData
         paddleMoveUnitsPerSecond = float.Parse(values[0]);
         ballImpulseForce = float.Parse(values[1]);
         ballLifetimePerSecond = float.Parse(values[2]);
+        ballMinimumSpawnTime = float.Parse(values[3]);
+        ballMaximumSpawnTime = float.Parse(values[4]);
     }
 
     #endregion

@@ -32,10 +32,30 @@ public static class ConfigurationUtils
         get => configurationData.BallImpulseForce;
     }
 
+    /// <summary>
+    /// Gets the lifetime of the ball before it destroys itself
+    /// </summary>
     public static float BallLifetimePerSecond
     {
         get => configurationData.BallLifetimePerSecond;
     }
+
+    /// <summary>
+    /// Gets the minimum spawn time for spawning new balls
+    /// </summary>
+    public static float BallMinimumSpawnTime
+    {
+        get => configurationData.BallMinimumSpawnTime;
+    }
+
+    /// <summary>
+    /// Gets the maximum spawn time for spawning new balls
+    /// </summary>
+    public static float BallMaximumSpawnTime
+    {
+        get => configurationData.BallMaximumSpawnTime;
+    }
+
     #endregion
 
     #region Methods 
