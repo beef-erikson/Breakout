@@ -63,7 +63,7 @@ public class ConfigurationData
     /// </summary>
     public float BallMaximumSpawnTime
     {
-        get => ballMinimumSpawnTime;
+        get => ballMaximumSpawnTime;
     }
 
     #endregion

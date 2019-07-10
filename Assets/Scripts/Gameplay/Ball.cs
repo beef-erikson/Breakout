@@ -32,9 +32,19 @@ public class Ball : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    /// <summary>
+    /// Starts the ball spawner timer with a random interval (see CSV)
+    /// </summary>
+    void StartBallSpawnTimer()
+    {
+        timerBallSpawn.Duration = Random.Range(
+            ConfigurationUtils.BallMinimumSpawnTime, ConfigurationUtils.BallMaximumSpawnTime);
+        timerBallSpawn.Run();
+    }
 
     /// <summary>
-    /// Moves ball
+    /// Gets components and starts timers
     /// </summary>
     void Start()
     {
@@ -52,9 +62,7 @@ public class Ball : MonoBehaviour
         timerBallLife.Run();
 
         // Starts ball spawn timer
-        timerBallSpawn.Duration = Random.Range(
-            ConfigurationUtils.BallMinimumSpawnTime, ConfigurationUtils.BallMaximumSpawnTime);
-        timerBallSpawn.Run();
+        StartBallSpawnTimer();
     }
 
     /// <summary>
@@ -79,14 +87,11 @@ public class Ball : MonoBehaviour
             isBallMoving = true;
         }
 
-        // Spawns new ball after time expires
-        if (!timerSpawnDelay.Running)
+        // Spawns new ball after spawn timer expires and restarts timer
+        if (!timerBallSpawn.Running)
         {
-            Instantiate(gameObject);
-
-            timerBallSpawn.Duration = Random.Range(
-                ConfigurationUtils.BallMinimumSpawnTime, ConfigurationUtils.BallMaximumSpawnTime);
-            timerBallSpawn.Run();
+            StartBallSpawnTimer();
+            Camera.main.GetComponent<BallSpawner>().SpawnBall();
         }
     }
 
