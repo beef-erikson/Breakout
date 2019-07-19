@@ -44,10 +44,11 @@ public class Ball : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets components and starts timers
+    /// Gets components, ball corners and starts timers
     /// </summary>
     void Start()
     {
+        // Grabs components
         rb2d = GetComponent<Rigidbody2D>();
         timerBallLife = gameObject.AddComponent<Timer>();
         timerSpawnDelay = gameObject.AddComponent<Timer>();
@@ -87,7 +88,7 @@ public class Ball : MonoBehaviour
             isBallMoving = true;
         }
 
-        // Spawns new ball after spawn timer expires and restarts timer
+        // Spawns new ball after spawn timer expires if area is empty and restarts timer
         if (!timerBallSpawn.Running)
         {
             StartBallSpawnTimer();
