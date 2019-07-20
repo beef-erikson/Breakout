@@ -70,7 +70,7 @@ public class ConfigurationData
     /// <summary>
     /// Amount of points standard blocks award
     /// </summary>
-    public float StandardBlockPoints
+    public int StandardBlockPoints
     {
         get => standardBlockPoints;
     }

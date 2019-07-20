@@ -59,7 +59,7 @@ public static class ConfigurationUtils
     /// <summary>
     /// Gets the point value for standard blocks
     /// </summary>
-    public static float StandardBlockPoints
+    public static int StandardBlockPoints
     {
         get => configurationData.StandardBlockPoints;
     }
