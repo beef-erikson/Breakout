@@ -1,2 +1,2 @@
-Paddle Move Units Per Second,Ball Impulse Force,Ball Lifetime in seconds,Minimum ball spawn time in seconds,Maximum ball spawn time in seconds
-5,250,10,5,10
+Paddle Move Units Per Second,Ball Impulse Force,Ball Lifetime in seconds,Minimum ball spawn time in seconds,Maximum ball spawn time in seconds,Standard Block points
+5,250,10,5,10,1

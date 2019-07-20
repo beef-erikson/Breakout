@@ -56,6 +56,14 @@ public static class ConfigurationUtils
         get => configurationData.BallMaximumSpawnTime;
     }
 
+    /// <summary>
+    /// Gets the point value for standard blocks
+    /// </summary>
+    public static float StandardBlockPoints
+    {
+        get => configurationData.StandardBlockPoints;
+    }
+
     #endregion
 
     #region Methods 

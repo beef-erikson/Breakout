@@ -19,6 +19,7 @@ public class ConfigurationData
     static float ballLifetimePerSecond = 4;
     static float ballMinimumSpawnTime = 10;
     static float ballMaximumSpawnTime = 20;
+    static int standardBlockPoints = 2;
 
     #endregion
 
@@ -66,6 +67,14 @@ public class ConfigurationData
         get => ballMaximumSpawnTime;
     }
 
+    /// <summary>
+    /// Amount of points standard blocks award
+    /// </summary>
+    public float StandardBlockPoints
+    {
+        get => standardBlockPoints;
+    }
+
     #endregion
 
     #region Constructor
@@ -100,7 +109,7 @@ public class ConfigurationData
 
     #endregion
 
-    #region Methods
+    #region Private Methods
 
     /// <summary>
     /// Sets the configuration fields generated from the .csv file
@@ -115,6 +124,7 @@ public class ConfigurationData
         ballLifetimePerSecond = float.Parse(values[2]);
         ballMinimumSpawnTime = float.Parse(values[3]);
         ballMaximumSpawnTime = float.Parse(values[4]);
+        standardBlockPoints = int.Parse(values[5]);
     }
 
     #endregion
